@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- to make different pages, need separate html files for each page. -->
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        HikmaLab
+    </title>
+    <link rel="stylesheet" href="../../styles.css">
+
+
+</head>
+
+<header>
+    <img src="../../images/logo_white_no_bg.png" alt="HikmaLab Logo" class = "logo" >
+    <nav>
+      <a href="../../index.html" class = "nav_button">
+         Home
+      </a>
+      <a href="../about.html" class = "nav_button">
+         About
+      </a>
+
+      <a href="../dashboards.html" class = "nav_button">
+         Dashboards
+    </a>
+    </nav>
+</header>
+
+<body>
+
+
+<h1>
+    Network Visualizer
+</h1>
+ <p>
+    This dashboard displays the whole network of narrators of a user defined time period and location.
+    It can display the number of taraf, hadith, or number of isnads between a pair of narrators.
+    For a explanation of vocabulary, navigate to <a href="../about.html"> the About page</a> for a explanation of terminology and methodology. 
+    If the dashboard says "preparing space..." it is loading because it has not been used and must be reloaded. Give it a minute for it to load.
+    To select cities,
+    use the dropdown option or type in the cities- assuming they are spelled correctly, they will show up. Same applies to the year options,
+    you may type in the years.
+    Please ensure the begining year is before the end year, there will be a error otherwise. There is a limit for a number of narrators that can be shown.
+    This is because the visualization library performs weaker with a really large network. For most use cases, a network with a thousand narrators or less will sufice.
+    The narrators selected will be the pairs (edges) with the largest number of narrations between them, for a chosen value (Hadith, Isnad, Taraf.)
+    If there are other metrics you would like to select edges from, please contact us!
+ </p>
+
+
+
+ <iframe
+ src="https://fdsrashid-isnad-visualizer.hf.space"
+ frameborder="0"
+ width="850"
+ height="450"
+></iframe>
+
+
+
+<p>
+    To navigate back to the main pages, please look at the top of the page, all relevant navigation pages are there.
+</p>
+
+</body>
+
+</html>
