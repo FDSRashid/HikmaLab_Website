@@ -6,6 +6,9 @@ body{
     background-size: cover;
     color: rgb(255, 255, 255);
     text-align: center;
+    animation: fadeIn 2s ease-in-out; /* Adjust duration and timing as needed */
+    
+    
 }
 
 #hometitle{
@@ -60,3 +63,15 @@ button:hover{
     width:50%;
     display: table-cell;
   }
+
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
