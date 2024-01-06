@@ -64,7 +64,10 @@ button:hover{
     display: table-cell;
   }
 
+.dashboards {
+  display: flex;
 
+}
 
   @keyframes fadeIn {
     from {
