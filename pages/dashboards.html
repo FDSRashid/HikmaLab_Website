@@ -21,15 +21,18 @@
       <a href="about.html" class = "nav_button">
          About
       </a>
-
-      <a href="dashboards.html" class = "nav_button">
-         Dashboards
-    </a>
+        <div class="dropdown">
+          <a href="tools.html" class="nav-button">Tools</a>
+          <div class="dropdown-content">
+            <a href="dashboards.html">Dashboards</a>
+            <a href="models.html">Models</a>
+          </div>
+        </div> 
     </nav>
+    
 </header>
 
 <body>
-
 
 <h1>
     Available Dashboards
@@ -47,7 +50,7 @@
 
         <button>
             <h3>
-                Narrator Retriever
+                Transmission Retriever
             </h3>
             <h4>
                 This dashboard retrieves all the narrator transmissions from a time period and place
@@ -70,7 +73,7 @@
 
         <button>
             <h3>
-                Network Visualizer
+                City Network Visualizer
             </h3>
             <h4>
                 This dashboard shows the network of a select number of narrators over a place and time period.
@@ -99,10 +102,64 @@
                 and students of the narrator over a time period.
             </h4>
         </button>
-
-
-
     </a>
+
+    <a href="dashboard/matn_retriever.html">
+        <button>
+            <h3>
+                Matn Retriever
+            </h3>
+            <h4> 
+                This dashboard allows you to search up a matn, and retrieve the most similar matns within our database.
+            </h4>
+        </button>
+    </a>
+
+    <a href="dashboard/isnad_taraf_retriever.html">
+        <button>
+            <h3>
+                Isnad Taraf Retriever
+            </h3>
+            <h4> 
+                This dashboard allows you to visualize the isnads of all the Hadith in a Taraf, 
+                as well as select Hadith within a Taraf.
+            </h4>
+        </button>
+    </a>
+
+    <a href="dashboard/taraf_semantic_similarity_visualizer.html">
+        <button>
+            <h3>
+                Taraf Semantic Similarity Visualizer
+            </h3>
+            <h4> 
+                This dashboard allows you to visualize semantic similarity scores of every combination of hadith within a Taraf.
+            </h4>
+        </button>
+    </a>
+
+    <a href="dashboard/diacritic_remover.html">
+        <button>
+            <h3>
+                Diacritic Remover
+            </h3>
+            <h4> 
+                This dashboard allows you to remove diacritics of Arabic text.
+            </h4>
+        </button>
+    </a>
+
+    <a href="dashboard/transliteration.html">
+        <button>
+            <h3>
+                Arabic Transliteration Converter
+            </h3>
+            <h4> 
+                This dashboard allows you to transliterate texts to arabic using Buckwalter scheme. 
+            </h4>
+        </button>
+    </a>
+
 </div>
 
 

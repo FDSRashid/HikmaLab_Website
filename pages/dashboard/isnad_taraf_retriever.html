@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- to make different pages, need separate html files for each page. -->
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        HikmaLab
+    </title>
+    <link rel="stylesheet" href="../../styles.css">
+
+
+</head>
+
+<header>
+    <img src="../../images/logo_white_no_bg.png" alt="HikmaLab Logo" class = "logo" >
+    <nav>
+      <a href="../../index.html" class = "nav_button">
+         Home
+      </a>
+      <a href="../about.html" class = "nav_button">
+         About
+      </a>
+
+      <div class="dropdown">
+        <a href="../tools.html" class="nav-button">Tools</a>
+        <div class="dropdown-content">
+          <a href="../dashboards.html">Dashboards</a>
+          <a href="../models.html">Models</a>
+        </div>
+      </div> 
+    </nav>
+</header>
+
+<body>
+
+
+<h1>
+    Isnad-Taraf Visualizer
+</h1>
+ <p>
+    This dashboard displays the network of narrators for a given Taraf, essentially amounting to the whole Isnad.
+    The network graph is interactive - each node can be clicked on and neighboring edges will be highlighted. 
+    The node lists name of the narrator, Narrator ID for our database (for use with Narrator Network Visualizer), and Generation. They are colored by the number of reports for that Narrator.
+    Edges contain the number of transmissions between the two narrators, and you can select the variable for transmission to be Tarafs, Hadith, Isnads, or Books.
+    The Edges are colored and sized by that same variable. 
+    For a explanation of vocabulary, navigate to <a href="../about.html"> the About page</a> for a explanation of terminology and methodology. 
+    If the dashboard says "preparing space..." it is loading because it has not been used and must be reloaded. Give it a minute for it to load.
+  
+ </p>
+
+ <p>
+  This dashboard has three sub-tools. The first is the visualizer for the whole Taraf. Information for each matn of the Taraf is provided.
+  This includes matn, generation of the final narrator, Name of the final narrator, Book Name, book author, Hadith Number.
+  The second tool is called "Book and Hadith Number Retriever", and it retrieves book and Hadith numbers for each Hadith of the Taraf, alongside the matn. 
+  The third tool is called "Select Hadith Isnad Visualizer". It has a number of rows of a two column table. You type in the Book number and Hadith number in the respective columns
+  and it will display the isnad of all the hadith present. You may add more Hadith by clicking "more rows". The default value for the rows is 0 (no Hadith).
+
+ </p>
+
+
+
+ <iframe
+ src="https://fdsrashid-isnad-taraf-visualizer.hf.space"
+ frameborder="0"
+ width="850"
+ height="450"
+></iframe>
+
+
+
+<p>
+    To navigate back to the main pages, please look at the top of the page, all relevant navigation pages are there.
+</p>
+
+</body>
+
+</html>
