@@ -22,6 +22,46 @@ body{
     
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sidebar Navigation */
+.section-nav {
+  margin-top: 2rem;
+  padding-left: 0;
+  border-left: 0px ;
+  width: 90%;
+}
+
+.section-nav a {
+  text-decoration: none;
+  display: block;
+  padding: .125rem 0;
+  color: #ccc;
+  transition: all 50ms ease-in-out; /* This small transition makes setting of the active state smooth */
+}
+
+.section-nav a:hover,
+.section-nav a:focus {
+  color: #666;
+}
+
+ /** page layout **/
+main {
+  display: grid;
+  grid-template-columns: 1fr 15em;
+  max-width: 100em;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/** enlarge the sections for this demo, so that we have a long scrollable page **/
+section {
+  margin-bottom: 20rem;
+}
+
+
 
 .dropdown {
   position: relative;
@@ -147,10 +187,6 @@ button:hover{
   display: table-cell;
 }
 
-ol{
- list-style: decimal;
- text-align: center;
-}
 
 .dashboards {
   display: grid;
@@ -180,6 +216,14 @@ ol{
   margin-top: 150px;
 }
 
+/* ul, ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+li {
+	margin-left: 1rem;
+} */
 
 .tools{
   display:flex;
@@ -211,6 +255,10 @@ ol{
 
   p {
     text-align: justify;
+    display: inline-block;
+  }
+  #about_p{
+    left: -150px;
   }
   
   
