@@ -15,9 +15,9 @@ body{
     */
     background-size: cover; /* Add this line to make the image cover the entire body element */
     background-position: center; /* This centers the image */
-
-    /*animation: fadeIn 2s ease-in-out, gradient 15s ease infinite;
-   */
+  
+    animation: fadeIn 2s ease-in-out, gradient 15s ease infinite;
+   
     
     
 }
@@ -32,19 +32,26 @@ html {
   padding-left: 0;
   border-left: 0px ;
   width: 90%;
+  font-size: large;
+}
+
+main > nav {
+	position: sticky;
+	top: 5rem;
+	align-self: start;
 }
 
 .section-nav a {
   text-decoration: none;
   display: block;
   padding: .125rem 0;
-  color: #ccc;
+  color: #050505;
   transition: all 50ms ease-in-out; /* This small transition makes setting of the active state smooth */
 }
 
 .section-nav a:hover,
 .section-nav a:focus {
-  color: #666;
+  color: #000000;
 }
 
  /** page layout **/
@@ -58,7 +65,7 @@ main {
 
 /** enlarge the sections for this demo, so that we have a long scrollable page **/
 section {
-  margin-bottom: 20rem;
+  margin-bottom: 2rem;
 }
 
 
@@ -143,6 +150,10 @@ header {
     color: black;
     border-radius: 16px;
   }
+
+  .section-nav a {
+    transition: all 100ms ease-in-out;
+}
 
 button{
     border: none;
