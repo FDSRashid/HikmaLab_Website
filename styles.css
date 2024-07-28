@@ -224,6 +224,9 @@ button:hover{
 }
 
 #about_body{
+  
+  max-width: 1000px; /* Adjust this value based on your preference */
+  margin: 0 auto;
   margin-top: 150px;
 }
 
