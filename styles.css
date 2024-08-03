@@ -15,11 +15,7 @@ body{
     */
     background-size: cover; /* Add this line to make the image cover the entire body element */
     background-position: center; /* This centers the image */
-  
     animation: fadeIn 2s ease-in-out, gradient 15s ease infinite;
-   
-    
-    
 }
 
 html {
@@ -225,9 +221,9 @@ button:hover{
 
 #about_body{
   
-  max-width: 1000px; /* Adjust this value based on your preference */
-  margin: 0 auto;
-  margin-top: 150px;
+  max-width: 80rem; /* Adjust this value based on your preference */
+  margin: 150px auto;
+  
 }
 
 
@@ -268,11 +264,57 @@ iframe {
   p {
     text-align: justify;
     display: inline-block;
+    max-width: 80rem; /* Adjust this value based on your preference */
+    
   }
   #about_p{
     left: -150px;
   }
   
+  .team-member {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Adjust horizontal spacing between photo & text */
+    max-width: 60rem;
+    margin: auto;
+  }
+  
+  /* Image styling - Float image to the left inside .team-member */
+  .team-member img {
+    float: left;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+    margin-right: 2rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .team-member {
+      flex-direction: column;
+    }
+    
+    .team-member img {
+      margin: 0 auto 1rem auto;
+    }
+  }
+
+
+  ul {
+    /* Remove bullets from the list items */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    position: relative;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
   
   
   

@@ -14,12 +14,17 @@
 <header>
     <img src="../../images/logo_white_no_bg.png" alt="HikmaLab Logo" class = "logo" >
     <nav>
-      <a href="../index.html" class = "nav_button">
+      <a href="../../index.html" class = "nav_button">
          Home
       </a>
-      <a href="../about.html" class = "nav_button">
-         About
-      </a>
+      <div class="dropdown">
+        <a href="../about.html" class="nav-button">About</a>
+        <div class="dropdown-content">
+          <a href="people.html">People</a>
+          <a href="vocab.html">Concepts</a>
+          <a href="changelog.html">Changelog</a>
+        </div>
+      </div> 
       <div class="dropdown">
         <a href="../tools.html" class="nav-button">Tools</a>
         <div class="dropdown-content">
@@ -30,15 +35,18 @@
     </nav>
 </header>
 
-<body id = "about_body">
-
-
-    <main>
-          <h1> About Us </h1>
-
-    </main>
+<body>
+  <section class="team-member">
+    <img src="../../images/Mairaj_Syed.jpg" alt="Member Name 1" width="250" height="250" loading="lazy">
+    <p>Mairaj U. Syed is an associate professor of Religious Studies and Middle East/South Asia Studies at the University of California, Davis, where he also served as the director of the medieval and early modern program.
+       He specializes in Islamic law, theology, comparative ethics, and digital humanities. 
+       His 2017 monograph, Coercion and Responsibility in Islam, published by Oxford University Press, explores the moral implications of coercion and offers a fresh framework for analyzing ethical thought within pluralistic traditions. 
+       Recently, with his colleague Dr. Joel Blecher, he completed a translation of <a href="https://www.penguinrandomhouse.com/books/671596/merits-of-the-plague-by-ibn-hajar-al-asqalani-edited-translated-and-with-an-introduction-and-notes-by-joel-blecher-and-mairaj-syed/#:~:text=of%20radical%20hope.-,Weaving%20together%20accounts%20of%20evil%20jinn%2C%20religious%20stories%2C%20medical%20manuals,patience%2C%20and%20care%20for%20those">Ibn Hajar al-‘Asqalani’s treatise on the plague</a>, published by Penguin. 
+       His latest research, involving interdisciplinary collaboration examines the efficacy of computational methods (e.g., NLP, machine learning) in yielding meaningful insights for the analysis of Islamic texts, particularly hadith. He is the recipient of multiple awards, including the UC Davis Academic Senate Large Grant and the Middle Ages in the Wider World Summer research grant. In 2014, he was a Fulbright scholar in Istanbul. Syed teaches diverse courses, from Islamic Studies to Digital Humanities.
+        He holds a Ph.D. in Religion from Princeton University.</p>
+  </section>
+  
+  <!-- Repeat above block as needed -->
 
 </body>
-
-
 </html>
