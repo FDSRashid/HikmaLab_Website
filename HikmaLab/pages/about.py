@@ -11,7 +11,7 @@ def about() -> rx.Component:
     """The about page.
 
     Returns:
-        The UI for the about page. (General)
+        The UI for the about page. (General).
     """
     with open("README.md", encoding="utf-8") as readme:
         content = readme.read()

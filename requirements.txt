@@ -1,4 +1,5 @@
 reflex
+reflex-type-animation
 plotly
 pyvis
 pandas

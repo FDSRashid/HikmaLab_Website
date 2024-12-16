@@ -4,166 +4,56 @@ from .. import styles
 
 import reflex as rx
 
-
-def menu_item_icon(icon: str) -> rx.Component:
-    return rx.icon(icon, size=20)
-
-
-def menu_item(text: str, url: str) -> rx.Component:
-    """Menu item.
+def navbar_link(text: str, url: str) -> rx.Component:
+    """Create a link for the navbar with the given text and url.
 
     Args:
-        text: The text of the item.
-        url: The URL of the item.
+        text: The text of the link.
+        url: The URL of the link.
 
     Returns:
-        rx.Component: The menu item component.
+        The link component.
     """
-    # Whether the item is active.
-    active = (rx.State.router.page.path == url.lower()) | (
-        (rx.State.router.page.path == "/") & text == "Overview"
-    )
-
     return rx.link(
-        rx.hstack(
-            rx.match(
-                text,
-                ("Home", menu_item_icon("anchor")),
-                ("About", menu_item_icon("book-open")),
-                ("Settings", menu_item_icon("settings")),
-                menu_item_icon("layout-dashboard"),
-            ),
-            rx.text(text, size="4", weight="regular"),
-            color=rx.cond(
-                active,
-                styles.accent_text_color,
-                styles.text_color,
-            ),
-            style={
-                "_hover": {
-                    "background_color": rx.cond(
-                        active,
-                        styles.accent_bg_color,
-                        styles.gray_bg_color,
-                    ),
-                    "color": rx.cond(
-                        active,
-                        styles.accent_text_color,
-                        styles.text_color,
-                    ),
-                    "opacity": "1",
-                },
-                "opacity": rx.cond(
-                    active,
-                    "1",
-                    "0.95",
-                ),
-            },
-            align="center",
-            border_radius=styles.border_radius,
-            width="100%",
-            spacing="2",
-            padding="0.35em",
-        ),
-        underline="none",
-        href=url,
-        width="100%",
+        rx.text(text, size="4", weight="medium"), href=url
+    )
+
+def dropdown_link(text: str, url: str) -> rx.Component:
+    return rx.link(
+        text, href=url, style={"color": "white", "text-decoration": "none"},
     )
 
 
-def navbar_footer() -> rx.Component:
-    """Navbar footer.
-
-    Returns:
-        The navbar footer component.
-    """
+def navbar_dropdown() -> rx.Component:
     return rx.hstack(
-        rx.link(
-            rx.text("Docs", size="3"),
-            href="https://reflex.dev/docs/getting-started/introduction/",
-            color_scheme="gray",
-            underline="none",
-        ),
-        rx.link(
-            rx.text("Blog", size="3"),
-            href="https://reflex.dev/blog/",
-            color_scheme="gray",
-            underline="none",
-        ),
-        rx.spacer(),
-        rx.color_mode.button(style={"opacity": "0.8", "scale": "0.95"}),
-        justify="start",
-        align="center",
-        width="100%",
-        padding="0.35em",
-    )
-
-
-def menu_button() -> rx.Component:
-    # Get all the decorated pages and add them to the menu.
-    from reflex.page import get_decorated_pages
-
-    # The ordered page routes.
-    ordered_page_routes = [
-        "/",
-        "/about",
-        "/settings",
-    ]
-
-    # Get the decorated pages.
-    pages = get_decorated_pages()
-
-    # Include all pages even if they are not in the ordered_page_routes.
-    ordered_pages = sorted(
-        pages,
-        key=lambda page: (
-            ordered_page_routes.index(page["route"])
-            if page["route"] in ordered_page_routes
-            else len(ordered_page_routes)
-        ),
-    )
-
-    return rx.drawer.root(
-        rx.drawer.trigger(
-            rx.icon("align-justify"),
-        ),
-        rx.drawer.overlay(z_index="5"),
-        rx.drawer.portal(
-            rx.drawer.content(
-                rx.vstack(
-                    rx.hstack(
-                        rx.spacer(),
-                        rx.drawer.close(rx.icon(tag="x")),
-                        justify="end",
-                        width="100%",
-                    ),
-                    rx.divider(),
-                    *[
-                        menu_item(
-                            text=page.get(
-                                "title", page["route"].strip("/").capitalize()
+                rx.hstack(
+                    navbar_link("Home", "/"),
+                    rx.menu.root(
+                        rx.menu.trigger(
+                            rx.button(
+                                rx.text(
+                                    "About",
+                                    size="4",
+                                    weight="medium",
+                                ),
+                                rx.icon("chevron-down"),
+                                weight="medium",
+                                variant="ghost",
+                                size="3",
                             ),
-                            url=page["route"],
-                        )
-                        for page in ordered_pages
-                    ],
-                    rx.spacer(),
-                    navbar_footer(),
-                    spacing="4",
-                    width="100%",
+                        ),
+                        rx.menu.content(
+                            dropdown_link("About the project", "/about"),
+                            dropdown_link("Team", "/"),
+                        ),
+                    ),
+                    navbar_link("Settings", "/settings"),
+                    justify="end",
+                    spacing="5",
                 ),
-                top="auto",
-                left="auto",
-                height="100%",
-                width="20em",
-                padding="1em",
-                bg=rx.color("gray", 1),
-            ),
-            width="100%",
-        ),
-        direction="right",
-    )
-
+                justify="between",
+                align_items="center",
+            )
 
 def navbar() -> rx.Component:
     """The navbar.
@@ -180,7 +70,8 @@ def navbar() -> rx.Component:
                 rx.image(src="/logo_black_bg-removebg-preview.png", height="2em"),
             ),
             rx.spacer(),
-            menu_button(),
+            navbar_dropdown(),
+            rx.color_mode.button(style={"opacity": "0.8", "scale": "0.95"}),
             align="center",
             width="100%",
             padding_y="1.25em",

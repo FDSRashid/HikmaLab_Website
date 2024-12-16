@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .. import styles
-from ..components.sidebar import sidebar
 from ..components.navbar import navbar
 from typing import Callable
 
@@ -16,22 +15,6 @@ default_meta = [
         "content": "width=device-width, shrink-to-fit=no, initial-scale=1",
     },
 ]
-
-
-def menu_item_link(text, href):
-    return rx.menu.item(
-        rx.link(
-            text,
-            href=href,
-            width="100%",
-            color="inherit",
-        ),
-        _hover={
-            "color": styles.accent_color,
-            "background_color": styles.accent_text_color,
-        },
-    )
-
 
 class ThemeState(rx.State):
     """The state for the theme of the app."""
@@ -82,7 +65,6 @@ def template(
         def templated_page():
             return rx.flex(
                 navbar(),
-                sidebar(),
                 rx.flex(
                     rx.vstack(
                         page_content(),
