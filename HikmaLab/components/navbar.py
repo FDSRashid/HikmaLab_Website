@@ -14,13 +14,71 @@ def navbar_link(text: str, url: str) -> rx.Component:
     Returns:
         The link component.
     """
+    active = (rx.State.router.page.path == url.lower()) | (
+        (rx.State.router.page.path == "/") & text == "Overview"
+    )
     return rx.link(
-        rx.text(text, size="4", weight="medium"), href=url
+        rx.text(text, size="4", weight="medium"), href=url,
+        color=rx.cond(
+                active,
+                styles.accent_text_color,
+                styles.text_color,
+            ),
+            style={
+                "_hover": {
+                    "background_color": rx.cond(
+                        active,
+                        styles.accent_bg_color,
+                        styles.gray_bg_color,
+                    ),
+                    "color": rx.cond(
+                        active,
+                        styles.accent_text_color,
+                        styles.text_color,
+                    ),
+                    "opacity": "1",
+                },
+                "opacity": rx.cond(
+                    active,
+                    "1",
+                    "0.95",
+                ),
+            },
+            underline="none",
     )
 
 def dropdown_link(text: str, url: str) -> rx.Component:
+    active = (rx.State.router.page.path == url.lower()) | (
+        (rx.State.router.page.path == "/") & text == "Overview"
+    )
     return rx.link(
-        text, href=url, style={"color": "white", "text-decoration": "none"},
+        rx.text(text, size="4", weight="regular"), href=url,
+                color=rx.cond(
+                active,
+                styles.accent_text_color,
+                styles.text_color,
+            ),
+            style={
+                "_hover": {
+                    "background_color": rx.cond(
+                        active,
+                        styles.accent_bg_color,
+                        styles.gray_bg_color,
+                    ),
+                    "color": rx.cond(
+                        active,
+                        styles.accent_text_color,
+                        styles.text_color,
+                    ),
+                    "opacity": "1",
+                },
+                "opacity": rx.cond(
+                    active,
+                    "1",
+                    "0.95",
+                ),
+            },
+            underline="none",
     )
 
 
@@ -44,7 +102,7 @@ def navbar_dropdown() -> rx.Component:
                         ),
                         rx.menu.content(
                             dropdown_link("About the project", "/about"),
-                            dropdown_link("Team", "/"),
+                            dropdown_link("Team", "/about_people"),
                         ),
                     ),
                     navbar_link("Settings", "/settings"),
