@@ -106,6 +106,7 @@ def navbar_dropdown() -> rx.Component:
                         ),
                     ),
                     navbar_link("Settings", "/settings"),
+                    navbar_link('Test_isnad', '/fetch_isnads'),
                     justify="end",
                     spacing="5",
                 ),
