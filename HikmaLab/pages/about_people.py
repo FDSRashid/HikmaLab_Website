@@ -10,7 +10,7 @@ def about_people() -> rx.Component:
     Returns:
         The UI for the about page. (General).
     """
-    with open(r'assets\mairaj_syed.md', encoding="utf-8",) as html:
+    with open(r'assets/mairaj_syed.md', encoding="utf-8",) as html:
         content = html.read()
     return rx.vstack(
         rx.heading("About the team", size="5"),
