@@ -17,6 +17,7 @@ class isnads(rx.Model, table=True):
 class QueryIsnads(rx.State):
     hadith: str 
     taraf: int
+    multi_hadith: list[str] 
     edges: list[isnads]
     sort_value: str = ""
     sort_reverse: bool = False
@@ -40,6 +41,25 @@ class QueryIsnads(rx.State):
     def get_isnads_taraf(self):
         with rx.session() as session:
             results = session.execute(sqlalchemy.text('select source, destination, hadith_count, taraf_count, book_count from isnads, json_each(taraf) where json_each.value=:taraf_select'), {'taraf_select':self.taraf}).all()
+        keys = ['source', 'destination', 'hadith_count', 'taraf_count', 'book_count']
+        results = [dict(zip(keys, list(value))) for value in results]
+        self.edges = [isnads(**row) for row in results]
+        self.total_items = len(self.edges)
+    
+    @rx.event
+    def get_isnads_hadiths(self):
+        '''
+        queries multiple hadith
+        '''
+        query = """
+        SELECT source, destination, hadith_count, taraf_count, book_count
+        FROM isnads
+        WHERE EXISTS (
+        SELECT 1
+        FROM json_each(hadith) AS elem
+        WHERE elem.value IN ({}));""".format(', '.join(f"'{item}'" for item in self.multi_hadith))
+        with rx.session as session:
+            results = session.execute(sqlalchemy.text(query)).all()
         keys = ['source', 'destination', 'hadith_count', 'taraf_count', 'book_count']
         results = [dict(zip(keys, list(value))) for value in results]
         self.edges = [isnads(**row) for row in results]

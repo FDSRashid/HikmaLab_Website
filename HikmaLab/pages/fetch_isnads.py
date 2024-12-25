@@ -4,6 +4,8 @@ from ..backend.isnad_state import QueryIsnads, isnads
 from .. import styles
 from ..templates import template
 from ..views.isnad_table import isnads_table
+from ..views.network_view import make_network_component
+from ..backend.network_state import NetworkState
 
 @template(route="/fetch_isnads", title="Fetch isnads tester")
 def test_isnads() -> rx.Component:
@@ -26,4 +28,6 @@ def test_isnads() -> rx.Component:
             on_click=QueryIsnads.get_isnads_taraf,
         ),
         isnads_table(),
+        make_network_component(),
+        on_mount=NetworkState.retrieve_isnad_network,
     )
