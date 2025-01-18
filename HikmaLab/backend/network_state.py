@@ -37,19 +37,19 @@ class narrators(rx.Model, table=True):
     whole_number_death: str
      
 
-class NetworkState(rx.State):
+class NetworkState(QueryIsnads):
     # Backend-only networkx graph (use underscore prefix for helper attributes)
     _graph: nx.Graph = nx.DiGraph()
     
     # Frontend state vars need proper initialization
     nodes: list = []  # Initialize empty list
     node_ids: list[int] = []  # Initialize empty list
-    edges: list[tuple[int, int]] = []  # Initialize empty list
+    edges_network: list[tuple[int, int]] = []  # Initialize empty list
     node_positions: dict = {}  # Initialize empty dict
 
     def update_frontend_data(self):
         self.node_ids = list(self._graph.nodes())
-        self.edges = list(self._graph.edges())
+        self.edges_network = list(self._graph.edges())
 
     @rx.event
     def retrieve_node_attributes(self):
@@ -73,7 +73,7 @@ class NetworkState(rx.State):
                         rawi_id=node_id,
                         gender="Unknown",
                         official_name=f"Unknown Narrator {node_id}",
-                        famous_name="",
+                        famous_name=f"Unknown Narrator {node_id}",
                         title_name="",
                         kunya="",
                         laqab="",
@@ -106,21 +106,32 @@ class NetworkState(rx.State):
 
     
     @rx.event
-    async def retrieve_isnad_network(self):
-        query_state = await self.get_state(QueryIsnads) 
-        edges = [(obj.source, obj.destination) for obj in query_state.edges] 
+    def retrieve_isnad_network(self):
+        edges = [(obj.source, obj.destination) for obj in self.edges] 
         self._graph.add_edges_from(edges)
         self.update_node_positions()
         self.update_frontend_data()
         self.retrieve_node_attributes()
 
+    @rx.event
+    def get_hadith_network(self):
+        self._graph = nx.DiGraph()
+        self.get_isnads_hadith()
+        self.retrieve_isnad_network()
+
+
+    @rx.event
+    def get_taraf_network(self):
+        self._graph = nx.DiGraph()
+        self.get_isnads_taraf()
+        self.retrieve_isnad_network()
 
     @rx.var
     def processed_nodes(self):
         return [{
             'id': node.rawi_id,
             'name': node.famous_name,
-            'x': self.node_positions[node.rawi_id][0]*4,
+            'x': self.node_positions[node.rawi_id][0],
             'y': -self.node_positions[node.rawi_id][1],
             'fontsize': 200
         } for node in self.nodes]
@@ -128,5 +139,5 @@ class NetworkState(rx.State):
     @rx.var
     def processed_edges(self):
         return [{'source': source, 'target': target} 
-                for source, target in self.edges]
+                for source, target in self.edges_network]
 

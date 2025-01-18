@@ -9,25 +9,24 @@ from ..backend.network_state import NetworkState
 
 @template(route="/fetch_isnads", title="Fetch isnads tester")
 def test_isnads() -> rx.Component:
-    return rx.vstack(
+    return rx.fragment(
         rx.input(
             placeholder="Enter hadith", 
-            on_blur=QueryIsnads.set_hadith
+            on_blur=NetworkState.set_hadith
         ),
         rx.input(
             placeholder="Enter taraf", 
             type_="number",
-            on_blur=QueryIsnads.set_taraf
+            on_blur=NetworkState.set_taraf
         ),
         rx.button(
             "Search by Hadith",
-            on_click=QueryIsnads.get_isnads_hadith,
+            on_click=NetworkState.get_hadith_network,   
         ),
         rx.button(
             "Search by Taraf",
-            on_click=QueryIsnads.get_isnads_taraf,
+            on_click=NetworkState.get_taraf_network,
         ),
         isnads_table(),
         make_network_component(),
-        on_mount=NetworkState.retrieve_isnad_network,
     )

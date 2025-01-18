@@ -58,7 +58,7 @@ def get_config() -> Dict[str, Any]:
         "highlight_font_weight": "bold",
         "highlight_stroke_color": "red",
         "highlight_stroke_width": 1.5,
-        "label_property": "n => (n.name ? `${n.id} - ${n.name}` : n.id)",
+        "label_property": "n => n.name",
         "mouse_cursor": "crosshair",
         "opacity": 0.9,
         "render_label": True,
@@ -66,7 +66,7 @@ def get_config() -> Dict[str, Any]:
         "stroke_color": "none",
         "stroke_width": 1.5,
         "symbol_type": "circle",
-        "view_generator": None
+        "view_generator": None,
     },
     "link": {
         "color": "lightgray",
